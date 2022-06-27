@@ -1,23 +1,28 @@
-const joi = require("@hapi/joi");
 
+const joi = require("@hapi/joi");
 const userValidation = (data) => {
 
   const schema = joi.object({
+
     email: joi.string().email().required(),
     password: joi.string().min(6).alphanum().required(),
-    confirm_password: joi.string().min(6).alphanum().required(),
-    nom_famille: joi.string().required(),
-    prenom: joi.string().required(),
+   confirmPassword: joi.string().min(6).alphanum().required(),
+
+    nom_famille: joi.string().regex(/^[A-Za-z]*$/).required()
+    .messages({ "string.pattern.base": "entrez un valid nom" }),
+
+    prenom: joi.string().regex(/^[A-Za-z]*$/).required()
+    .messages({ "string.pattern.base": "entrez un valid prenom" }),
     gouvernorat: joi.string().required(),
     groupe_sanguin: joi.string().required(),
-    date_naissance: joi.number().required(),
+    date_naissance: joi.number(),
     role: joi.string(),
-    code_postal: joi.number().required(),
+    code_postal: joi.number(),
     tel: joi
       .string()
-      .length()
-      .pattern(/^[0-9]+$/)
-      .required(),
+      .length(8).pattern(/^[0-9]+$/)
+      .required()
+      .messages({ "string.pattern.base": "entrez un valid numero de téléphpne de 8 characters" }),
 
   });
 

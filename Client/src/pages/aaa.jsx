@@ -8,7 +8,7 @@ import abc from "../assets/image/register.jpg";
 import AuthService from '../services/AuthService';
 import { Button, Form, Input, Select } from 'antd';
 import { gouvernerat, group } from '../mocks/groupEmplacement';
-import { Registred, selectErrorUnique, selectregister, selectregistererror } from '../features/authentification/authSlice';
+import { Registred, selectregister, selectregistererror } from '../features/authentification/authSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 const { Option } = Select;
@@ -28,8 +28,8 @@ const [confirmPassword, setConfirm] = useState('')
 const [nom_famille, setNom] = useState('')
 const [prenom, setPrenom] = useState('')
 const [tel, setTel] = useState('')
-const [groupe_sanguin, setGroupe] = useState('O+')
-const [gouvernorat, setGouvernorat] = useState('beja')
+const [groupe_sanguin, setGroupe] = useState('')
+const [gouvernorat, setGouvernorat] = useState('')
 const errors = useSelector(selectregistererror)
 const registerr = useSelector(selectregister)
 const dispatch = useDispatch()
@@ -47,10 +47,12 @@ const onFinish = (e) => {
     groupe_sanguin:groupe_sanguin,
     tel:tel,
     gouvernorat:gouvernorat,
-    confirmPassword:confirmPassword,
+    // confirmPassword:confirmPassword,
   }
 
   dispatch(Registred(data))
+
+//   props.history.replace("/login")
 
 }
 useEffect(()=>{
@@ -61,13 +63,55 @@ if(registerr ==="success"){
 
 }},[registerr])
 
+    // const onGenderChange = (value) => {
+    //     switch (value) {
+    //       case 'male':
+    //         form.setFieldsValue({
+    //           note: 'Hi, man!',
+    //         });
+    //         return;
+
+    //       case 'female':
+    //         form.setFieldsValue({
+    //           note: 'Hi, lady!',
+    //         });
+    //         return;
+
+    //       case 'other':
+    //         form.setFieldsValue({
+    //           note: 'Hi there!',
+    //         });
+    //     }
+    //   };
+    
+    // const onFinish = (values) => {
+
+    //     console.log('Success:', values);
+    //     values.role = role
+
+    //     AuthService.register(values).then(jsonData => {
+
+    //         console.log(jsonData, '%cabcdefgh', "color: blue");
+
+    //         if (!jsonData.error) {
+
+    //             alert('Vous êtes inscrit avec succès')
+    //             props.history.replace("/login")
+    //         }
+    //         else {
+    //             console.log("%c...register error...", "color: blue", jsonData.error)
+    //             setError(jsonData.error)
+    //         }
+    //     })
+
+    // };
 
     const ErrorHandler = ({ name }) => { 
 
         return (
             <>
                 {
-                   errors.map(e => {console.log(errors,"errrrrrrrrrrrr");
+                   errors.map(e => {
                         return (
                             <>
                                 {
@@ -83,7 +127,6 @@ if(registerr ==="success"){
             </>
         )
     }
-
 
 
     function onChange(value) {
@@ -179,15 +222,13 @@ if(registerr ==="success"){
                     </Form.Item>
 
                     <Form.Item  label="gouvernorat" required>  
-                     <select class="ant-form-item-control-input-content"  style={{width:"100%"}}
+                     <select class="ant-form-item-control-input-content"
                               value={gouvernorat}  onChange={(e) => setGouvernorat(e.target.value)}
-              
-
-
+               
               >
                      {
    
-                    gouvernerat.map((c, i) => {
+                    gouvernerat.map((c, i) => {console.log(c,'cccccccccccc');
                       return (
                         <option value={c._id} >{c}</option>
                       )
@@ -202,10 +243,8 @@ if(registerr ==="success"){
 
 
                     <Form.Item
-                        name="groupe_sanguin"
-
+                        name="groupe_sanguin" 
                         label="groupe_sanguin"
-
                         rules={[
                             {
                                 required: true,
@@ -214,7 +253,7 @@ if(registerr ==="success"){
                         ]}
                         hasFeedback
                     >
-                        <select onChange={(e) => setGroupe(e.target.value)} style={{width:"100%"}}
+                        <select onChange={(e) => setGroupe(e.target.value)} 
                             placeholder="Select groupe_sanguin"
 
                             allowClear
@@ -242,18 +281,19 @@ if(registerr ==="success"){
                         rules={[
 
                             {
-                                type: 'email', 
+                                type: 'email',
+                                
                             },
 
                             {
                                 required: true,
-
+                              
                             },                       
                         ]}
                     >
                         <Input />
-                        <span style={{ color: 'red' }} >{errors.find(e => e.path[0] === 'email') ? errors.find(e => e.path[0] === 'email').message : ''}</span>
-                        {/* <ErrorHandler name='email' /> */}
+
+                        <ErrorHandler name='email' />
 
                     </Form.Item>
 

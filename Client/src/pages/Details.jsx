@@ -3,10 +3,8 @@ import { Modal, Button } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import { GetAnnonceById } from "../features/annonce/annonceSlice";
 import { BsTelephoneOutbound } from 'react-icons/bs'
-
 import abc from '../assets/image/proverbe.jpg'
 function Details() {
-
 
   const [to, setTo] = useState('')
   const [message, setMessage] = useState('')
@@ -69,7 +67,7 @@ function Details() {
                             <div class="col-md-6">
                               <div class="form-group">
                                 <label class="label" htmlFor="subject">
-                                  nom
+                                  nom : 
                                   <span
                                     style={{
                                       color: "black",
@@ -85,7 +83,7 @@ function Details() {
                             <div class="col-md-6">
                               <div class="form-group">
                                 <label class="label" htmlFor="name">
-                                  Prenom:
+                                  Prenom :
                                   <span
                                     style={{
                                       color: "black",
@@ -102,7 +100,9 @@ function Details() {
                             <div class="col-md-6">
                               <div class="form-group">
                                 <label class="label" htmlFor="emplacement">
-                                  emplacement:
+
+                                  emplacement :
+
                                   <span
                                     style={{
                                       color: "black",
@@ -119,7 +119,7 @@ function Details() {
                             <div class="col-md-6">
                               <div class="form-group">
                                 <label class="label" htmlFor="email">
-                                  groupe_sanguin
+                                  groupe_sanguin : 
                                   <span
                                     style={{
                                       color: "black",
@@ -165,21 +165,23 @@ function Details() {
                                   </span>
                                 </label>
                               </div>
-                            </div>
+                            </div> 
 
                             <div class="col-md-12">
                               <div class="form-group">
                                 <label class="label" htmlFor="#">
                                   description
-                                </label>
-                                <textarea
-                                  name="message"
-                                  class="form-control"
-                                  id="message"
-                                  cols={30}
-                                  rows={4}
-                                  defaultValue={single.description}
-                                />
+                                </label><br></br>
+                                <span
+
+                                    style={{
+                                      color: "black",
+                                      fontSize: "17px",
+                                     
+                                    }}
+                                  >
+                                    {single.description}
+                                  </span>
                               </div>
                             </div>
                             <br></br>

@@ -23,29 +23,50 @@ module.exports = {
   register: (req, res) => {
     const { email, password, role } = req.body;
 
-    const { errors } = userValidation(req.body);
+    const { error } = userValidation(req.body);
 
-    if (errors) {
-      res.status(404).json(errors);
-    } else {
+    if (error)
+    return res.status(422).json({
+        success: false,
+        errors: error,
+        message: 'user data validation error'
+    })
+
+    else {
+
       userModel.findOne({ email }, function (err, user) {
+
         if (err) return res.status(500).json({ msg: err.message, error: true });
 
         if (user)
-          return res
-            .status(400)
-            .json({ msg: "User already exist", error: true });
-        else {
-          const newUser = new userModel(req.body);
+            return res.status(422).json({
+                message: "user with this email is already exist!",
+                errors: {
+                    details: [
+                        {
 
-          (newUser.email = req.body.email),
+                            "path": [
+                                "email"
+                            ],
+                            "message": [
+                                "email déja utilisé"
+                            ]
+                        }
+                    ]
+                }
+            })
+
+        else {
+
+          const newUser = new userModel(req.body);
+            (newUser.email = req.body.email),
             (newUser.password = req.body.password),
-            (newUser.confirm_password = req.body.confirm_password),
+            (newUser.confirmPassword = req.body.confirmPassword),
             (newUser.prenom = req.body.prenom),
             (newUser.nom_famille = req.body.nom_famille),
             (newUser.gouvernorat = req.body.gouvernorat),
-            (newUser.code_postal = req.body.code_postal),
-            (newUser.date_naissance = req.body.date_naissance),
+            // (newUser.code_postal = req.body.code_postal),
+            // (newUser.date_naissance = req.body.date_naissance),
             (newUser.groupe_sanguin = req.body.groupe_sanguin),
             (newUser.tel = req.body.tel),
 

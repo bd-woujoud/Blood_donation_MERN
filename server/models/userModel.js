@@ -14,10 +14,10 @@ const UserSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  confirmPassword: {
-    type: String,
-    required: true,
-  },
+  // confirmPassword: {
+  //   type: String,
+  //   required: true,
+  // },
 
   nom_famille: {
     type: String,
@@ -55,7 +55,8 @@ const UserSchema = new mongoose.Schema({
     //required: true
     default: "beneficiaire",
   },
-});
+},
+{timestamps:true});
 
 //Presave middleware - NOTE: if use arrow function, this becomes empty object, and we can't use isModified()
 UserSchema.pre("save", function (next) {

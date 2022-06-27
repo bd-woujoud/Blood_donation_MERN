@@ -2,7 +2,7 @@
 export const group = ["O+", "O-", "A+", "A-", "B+", "B-", "AB+", "AB-"];
 
 export const gouvernerat = [
-"gouvernorat",
+// "gouvernorat",
   "Béja",
   "Ben Arous",
   "Bizerte	",

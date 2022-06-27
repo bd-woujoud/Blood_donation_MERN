@@ -17,7 +17,7 @@ function Home() {
               <div className="col-xl-6">
                 <h1>REJOIGNEZ-NOUS</h1>
                 <h1> DEVENEZ DONNEUR !</h1>
-                <a href="/login" className="btn-get-started scrollto">Commencer</a>
+              
               </div>
             </div>
           </div>
@@ -242,7 +242,7 @@ function Home() {
             <div className="container">
               <div className="row">
                 <div className="col-lg-3 col-md-6 footer-contact">
-                  <h3>Presento<span>.</span></h3>
+                  <h3>Blood donation<span>.</span></h3>
                   <p>
                     Sahloul <br />
 
@@ -251,26 +251,7 @@ function Home() {
                     <strong>Email:</strong> info@example.com<br />
                   </p>
                 </div>
-                <div className="col-lg-2 col-md-6 footer-links">
-                  <h4>Useful Links</h4>
-                  <ul>
-                    <li><i className="bx bx-chevron-right" /> <a href="#">Home</a></li>
-                    <li><i className="bx bx-chevron-right" /> <a href="#">About us</a></li>
-                    <li><i className="bx bx-chevron-right" /> <a href="#">Services</a></li>
-                    <li><i className="bx bx-chevron-right" /> <a href="#">Terms of service</a></li>
-                    <li><i className="bx bx-chevron-right" /> <a href="#">Privacy policy</a></li>
-                  </ul>
-                </div>
-                <div className="col-lg-3 col-md-6 footer-links">
-                  <h4>Our Services</h4>
-                  <ul>
-                    <li><i className="bx bx-chevron-right" /> <a href="#">Web Design</a></li>
-                    <li><i className="bx bx-chevron-right" /> <a href="#">Web Development</a></li>
-                    <li><i className="bx bx-chevron-right" /> <a href="#">Product Management</a></li>
-                    <li><i className="bx bx-chevron-right" /> <a href="#">Marketing</a></li>
-                    <li><i className="bx bx-chevron-right" /> <a href="#">Graphic Design</a></li>
-                  </ul>
-                </div>
+              
               </div>
             </div>
           </div>

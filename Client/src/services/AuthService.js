@@ -59,15 +59,7 @@ const AuthService = {
             })
     },
 
-    // getme : function(){
-    //     return fetch("http://localhost:5000/users/getme", { credentials: 'include' })
-    //         .then(res => {
-    //             if (res.status !== 401)
-    //                 return res.json().then(jsonData => jsonData)
-    //             else
-    //                 return null
-    //         })
-    // }
+
 }
 
 export default AuthService
